@@ -3,7 +3,7 @@ use Cake\Routing\Router;
 
 Router::plugin('Resize', ['path' => '/'], function ($routes) {
     $routes->connect(
-        '/resize/:size/**',
+        '/image/:size/**',
         [
             'controller' => 'Resize',
             'action' => 'resize'

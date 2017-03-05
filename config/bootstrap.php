@@ -3,7 +3,9 @@
 use Cake\Core\Configure;
 
 Configure::write('Resize', [
-    'defaultSize' => [50, 50], //for invalid sizes
+    'defaultSize' => [500, 500], //for invalid sizes
     'sizes' => [], //whitelist of sizes[[100,100], [200,200]],
-    'maxSize' => [1920, 1920], //you can define a maxSize
+    'maxSize' => [4000, 4000], //you can define a maxSize
 ]);
+
+Configure::write('teste','hue br');
