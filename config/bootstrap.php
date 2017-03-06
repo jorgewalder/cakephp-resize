@@ -7,5 +7,3 @@ Configure::write('Resize', [
     'sizes' => [], //whitelist of sizes[[100,100], [200,200]],
     'maxSize' => [4000, 4000], //you can define a maxSize
 ]);
-
-Configure::write('teste','hue br');

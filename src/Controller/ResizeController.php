@@ -25,28 +25,22 @@ class ResizeController extends AppController
     public function resize($fullSize="", $filename = "")
     {
         $this->autoRender = false;
-        $cacheFilename = 'resize' . DS . $fullSize . DS . $filename;
+        $cacheFilename = 'image' . DS . $fullSize . DS . $filename;
 
         $size = $this->_checkSize($fullSize);
 
-        debug($size);
-
-        exit();
-
-        // if($this->_checkFile($cacheFilename)){
-        //     $cacheFilename = Image::open($filename)
-        //     ->zoomCrop($size[0], $size[1], 'transparent', 'center', 'center')
-        //     ->save($cacheFilename);
-        //     $this->redirect('/'.$cacheFilename);
-        // }
+        if($this->_checkFile($cacheFilename)){
+            $cacheFilename = Image::open($filename)
+            ->zoomCrop($size[0], $size[1], 'transparent', 'center', 'center')
+            ->save($cacheFilename);
+            $this->redirect('/'.$cacheFilename);
+        }
     }
 
     private function _checkSize($fullSize){
         $size = explode('x', $fullSize);
         $size[0] = (int) $size[0];
         $size[1] = isset($size[1]) ? (int) $size[1]:  (int) $size[0];
-
-        debug($size);
         $isValidSize = true;
         if(!isset($size[0]) || !isset($size[1])){
             $isValidSize = false;
@@ -60,14 +54,8 @@ class ResizeController extends AppController
             $size = $this->config['defaultSize'];
         }
 
-        debug(Configure::read('teste'));
-
-        debug($this->config);
-
         $size[0] = ($size[0] > $this->config['maxSize'][0]) ? $this->config['maxSize'][0] : $size[0];
         $size[1] = ($size[1] > $this->config['maxSize'][1]) ? $this->config['maxSize'][1] : $size[1];
-
-        debug($size);
         return $size;
     }
 
