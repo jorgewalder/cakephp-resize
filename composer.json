@@ -1,6 +1,7 @@
 {
     "name": "jorgewalder/cakephp-resize",
     "description": "Image Resize Plugin Cakephp",
+    "version":"1.0.1",
     "type": "cakephp-plugin",
     "license": "MIT",
     "require": {
